@@ -58,7 +58,7 @@ def incr_lock(args):
 def get_next_line(args, filename):
     with open(filename, 'rt') as datafile:
         lines = datafile.readlines()
-    lineno = incr_lock(args)
+    lineno = incr_lock(args) - 1
     try:
         return lines[lineno]
     except IndexError:

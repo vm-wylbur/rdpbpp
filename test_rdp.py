@@ -42,6 +42,10 @@ def test_get_line():
     assert line1 == "Bernese Mountain Dog"
 
 
+def test_xxxxxxxx
+# needs to test re-getting args a second time. 
+
+
 def test_get_line_done():
     args = rdp.init_all(tag=testname)
     last_found = False

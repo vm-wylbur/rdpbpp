@@ -30,11 +30,15 @@ def get_args():
     return args
 
 
-def init_all(tag="rdpbpp"):
+def get_lock(tag="rdpbpp"):
     lock = filelock.FileLock("/tmp/{}.lock".format(tag))
     fname = "/tmp/{}".format(tag)
     Args = namedtuple('Args', ['tag', 'lock', 'fname'])
-    args = Args(tag, lock, fname)
+    return Args(tag, lock, fname)
+
+
+def init_all(tag="rdpbpp"):
+    args = get_lock(tag)
     init_lock(args)
     return args
 
@@ -66,13 +70,6 @@ def get_next_line(args, filename):
 
 
 if __name__ == '__main__':
-    args = get_args()
-    if args.init:
-        init_lock(args)
-    elif args.incr:
-        rdpint = incr_lock(args)
-        print(rdpint)
-    else:
-        raise ValueError("must init or increment")
+    pass
 
 # end.

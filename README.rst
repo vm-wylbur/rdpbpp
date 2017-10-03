@@ -17,4 +17,11 @@ Usage
 
 Someday I'll write documentation.
 
+Tests
+----------
 
+You should install pytest (with pip) and then
+
+     $ pytest test_rdp.py
+
+good luck.

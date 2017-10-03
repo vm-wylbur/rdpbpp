@@ -4,7 +4,7 @@
 # Maintainers: PB
 # Copyright:   2017, HRDAG, GPL v2 or later
 # ============================================
-# rdpbpp/tests/test_rdp.py
+# rdpbpp/test_rdp.py
 
 import os
 import os.path

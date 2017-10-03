@@ -42,8 +42,11 @@ def test_get_line():
     assert line1 == "Bernese Mountain Dog"
 
 
-def test_xxxxxxxx
-# needs to test re-getting args a second time. 
+def test_reget_args():
+    args = rdp.init_all(tag=testname)
+    args2 = rdp.get_lock(tag=testname)
+    assert args.tag == args2.tag
+    assert args.fname == args2.fname
 
 
 def test_get_line_done():

@@ -33,7 +33,8 @@ def get_args():
 def init_all(tag="rdpbpp"):
     lock = filelock.FileLock("/tmp/{}.lock".format(tag))
     fname = "/tmp/{}".format(tag)
-    args = namedtuple(tag=tag, lock=lock, fname=fname)
+    Args = namedtuple('Args', ['tag', 'lock', 'fname'])
+    args = Args(tag, lock, fname)
     init_lock(args)
     return args
 

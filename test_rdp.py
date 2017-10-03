@@ -6,7 +6,27 @@
 # ============================================
 # rdpbpp/tests/test_rdp.py
 
+import os
+import os.path
+import filelock
+import rdp
 
-rdp.init_all('testdog')
+testname = 'bobdog'
 
-# done.
+
+def setup_module():
+    try:
+        os.unlink("/tmp/{}".format(testname))
+        os.unlink("/tmp/{}.lock".format(testname))
+    except:
+        pass
+
+
+def test_args():
+    args = rdp.init_all(tag=testname)
+    assert args.tag == testname
+    assert args.fname == '/tmp/{}'.format(testname)
+    assert os.path.exists(args.fname)
+    assert type(args.lock) is filelock.UnixFileLock
+
+# done.:

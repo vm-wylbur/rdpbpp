@@ -4,7 +4,7 @@
 # Maintainers: PB
 # Copyright:   2017, HRDAG, GPL v2 or later
 # ============================================
-# rdpbpp/bin/rdpbpp.py
+# rdpbpp/rdp/rdp.py
 
 import argparse
 import filelock

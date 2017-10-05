@@ -11,22 +11,9 @@ import filelock
 from collections import namedtuple
 
 
-def get_args():
-    parser = argparse.ArgumentParser(
-        description='Setup locking integer incrementer.')
-
-    parser.add_argument('-t', '--tag', default='rdpbpp', dest='tag',
-                        help='the filename in /tmp for the lock and int file')
-    parser.add_argument('-s', '--init', dest='init', default=False,
-                        action='store_true',
-                        help='Init the lock and int files')
-    parser.add_argument("-i", "--increment", dest='incr', default=False,
-                        action='store_true', help="increment counter file")
-
-    args = parser.parse_args()
-    d = vars(args)
-    d['lock'] = filelock.FileLock("/tmp/{}.lock".format(args.tag))
-    d['fname'] = "/tmp/{}".format(args.tag)
+def init_all(tag="rdpbpp"):
+    args = get_lock(tag)
+    init_lock(args)
     return args
 
 
@@ -35,12 +22,6 @@ def get_lock(tag="rdpbpp"):
     fname = "/tmp/{}".format(tag)
     Args = namedtuple('Args', ['tag', 'lock', 'fname'])
     return Args(tag, lock, fname)
-
-
-def init_all(tag="rdpbpp"):
-    args = get_lock(tag)
-    init_lock(args)
-    return args
 
 
 def init_lock(args):
